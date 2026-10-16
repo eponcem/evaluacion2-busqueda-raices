@@ -1,0 +1,37 @@
+funcion,metodo,iteraciones,raiz,error,residuo,paso,convergio,precision_raiz,estado,motivo,raiz_referencia,tolerancia,max_iteraciones
+polinomica,Bisección,20,1.5213804244995117,7.176949441412006e-07,4.265829404825894e-06,9.5367431640625e-07,True,True,convergencia,El paso es menor que la tolerancia; el residuo aún no cumple la tolerancia.,1.5213797068045676,1e-06,100
+polinomica,Falsa posición,12,1.521379461790157,2.450144105381469e-07,1.4563135952716522e-06,6.033862631760201e-07,True,True,convergencia,El paso es menor que la tolerancia; el residuo aún no cumple la tolerancia.,1.5213797068045676,1e-06,100
+polinomica,Punto fijo,7,1.5213796792714414,2.7533126223389104e-08,1.6365107935456535e-07,1.6365107935456535e-07,True,True,convergencia,El residuo es menor que la tolerancia.,1.5213797068045676,1e-06,100
+polinomica,Secante,6,1.5213797079848717,1.1803040766977801e-09,7.015477976324291e-09,3.391315127831973e-06,True,True,convergencia,El residuo es menor que la tolerancia.,1.5213797068045676,1e-06,100
+polinomica,Newton-Raphson,2,1.5213798059647863,9.916021870282066e-08,5.893874259754739e-07,0.00035932446999642487,True,True,convergencia,El residuo es menor que la tolerancia.,1.5213797068045676,1e-06,100
+polinomica,Newton mejorado,2,1.5213796094955705,9.730899708237928e-08,5.783840677509033e-07,0.00035584349922679337,True,True,convergencia,El residuo es menor que la tolerancia.,1.5213797068045676,1e-06,100
+raiz_doble,Bisección,0,,,,,False,False,no_aplicable,No hay cambio de signo entre los extremos del intervalo.,2.0,1e-06,100
+raiz_doble,Falsa posición,0,,,,,False,False,no_aplicable,No hay cambio de signo entre los extremos del intervalo.,2.0,1e-06,100
+raiz_doble,Punto fijo,10,1.99921875,0.0007812499999999556,6.103515624999307e-07,0.0007812499999999556,True,False,convergencia,El residuo es menor que la tolerancia.,2.0,1e-06,100
+raiz_doble,Secante,14,1.999255220109057,0.0007447798909430148,5.54697085953089e-07,0.00046029865435515127,True,False,convergencia,El residuo es menor que la tolerancia.,2.0,1e-06,100
+raiz_doble,Newton-Raphson,10,1.99921875,0.0007812499999999556,6.103515624999307e-07,0.0007812499999999556,True,False,convergencia,El residuo es menor que la tolerancia.,2.0,1e-06,100
+raiz_doble,Newton mejorado,1,2.0,0.0,0.0,0.8,True,True,convergencia,Se encontró una raíz exacta en la aritmética utilizada.,2.0,1e-06,100
+logaritmica,Bisección,19,2.926271438598633,3.761551319314549e-07,5.046993099000474e-07,1.9073486328125e-06,True,True,convergencia,El residuo es menor que la tolerancia.,2.926271062443501,1e-06,100
+logaritmica,Falsa posición,4,2.9262714818221873,4.193786864448157e-07,5.626937271685506e-07,8.138093423148973e-06,True,True,convergencia,El residuo es menor que la tolerancia.,2.926271062443501,1e-06,100
+logaritmica,Punto fijo,13,2.9262714540300196,3.9158651876647355e-07,5.254040917890279e-07,1.5374745925278432e-06,True,True,convergencia,El residuo es menor que la tolerancia.,2.926271062443501,1e-06,100
+logaritmica,Secante,3,2.9262710641925755,1.7490746628823217e-09,2.346789429452656e-09,1.1281492793724368e-05,True,True,convergencia,El residuo es menor que la tolerancia.,2.926271062443501,1e-06,100
+logaritmica,Newton-Raphson,3,2.9262710624428703,6.306066779870889e-13,8.464340339742193e-13,3.8061071956363435e-06,True,True,convergencia,El residuo es menor que la tolerancia.,2.926271062443501,1e-06,100
+logaritmica,Newton mejorado,3,2.926271062444928,1.4273027204581012e-12,1.91491267287347e-12,5.725823562841015e-06,True,True,convergencia,El residuo es menor que la tolerancia.,2.926271062443501,1e-06,100
+exponencial,Bisección,20,0.567143440246582,1.498367981911386e-07,2.348157265297246e-07,9.5367431640625e-07,True,True,convergencia,El residuo es menor que la tolerancia.,0.5671432904097838,1e-06,100
+exponencial,Falsa posición,7,0.5671433760339214,8.562413755797138e-08,1.3418529054565198e-07,6.843411811674471e-07,True,True,convergencia,El residuo es menor que la tolerancia.,0.5671432904097838,1e-06,100
+exponencial,Punto fijo,21,0.5671437514174078,4.610076239641714e-07,7.224649444248499e-07,1.273866462869755e-06,True,True,convergencia,El residuo es menor que la tolerancia.,0.5671432904097838,1e-06,100
+exponencial,Secante,4,0.5671433066049633,1.6195179419753458e-08,2.5380166635002865e-08,2.7051814781353656e-05,True,True,convergencia,El residuo es menor que la tolerancia.,0.5671432904097838,1e-06,100
+exponencial,Newton-Raphson,2,0.5671431650348622,1.2537492166675435e-07,1.964804717813351e-07,0.0008321618376440076,True,True,convergencia,El residuo es menor que la tolerancia.,0.5671432904097838,1e-06,100
+exponencial,Newton mejorado,2,0.5671434273931901,1.3698340628476302e-07,2.1467262067975668e-07,0.0008703064662916038,True,True,convergencia,El residuo es menor que la tolerancia.,0.5671432904097838,1e-06,100
+trigonometrica,Bisección,20,0.7390851974487305,6.423356979645689e-08,1.0750207668497325e-07,9.5367431640625e-07,True,True,convergencia,El residuo es menor que la tolerancia.,0.7390851332151607,1e-06,100
+trigonometrica,Falsa posición,5,0.7390847824489231,3.5076623761121084e-07,5.870465491497612e-07,6.651568897342308e-06,True,True,convergencia,El residuo es menor que la tolerancia.,0.7390851332151607,1e-06,100
+trigonometrica,Punto fijo,33,0.7390855938689606,4.6065379988302624e-07,7.709558191848487e-07,1.1445103118568056e-06,True,True,convergencia,El residuo es menor que la tolerancia.,0.7390851332151607,1e-06,100
+trigonometrica,Secante,4,0.7390851121274639,2.1087696810973e-08,3.52926228242012e-08,3.4249784165441e-05,True,True,convergencia,El residuo es menor que la tolerancia.,0.7390851332151607,1e-06,100
+trigonometrica,Newton-Raphson,3,0.7390851339208068,7.056460971099909e-10,1.1809778710514252e-09,5.653222907242572e-05,True,True,convergencia,El residuo es menor que la tolerancia.,0.7390851332151607,1e-06,100
+trigonometrica,Newton mejorado,3,0.7390851321653727,1.0497879232573837e-09,1.756937706431927e-09,6.894686466529798e-05,True,True,convergencia,El residuo es menor que la tolerancia.,0.7390851332151607,1e-06,100
+mixta,Bisección,20,0.641714382171631,1.129874838134981e-08,1.381536651745563e-08,8.583068847878295e-07,True,True,convergencia,El residuo es menor que la tolerancia.,0.6417143708728826,1e-06,100
+mixta,Falsa posición,4,0.6417138391748604,5.316980222769274e-07,6.501253303481391e-07,1.0779044236519653e-05,True,True,convergencia,El residuo es menor que la tolerancia.,0.6417143708728826,1e-06,100
+mixta,Punto fijo,13,0.6417139352989311,4.3557395157378664e-07,5.325911528464289e-07,6.852109141197715e-07,True,True,convergencia,El residuo es menor que la tolerancia.,0.6417143708728826,1e-06,100
+mixta,Secante,3,0.6417145290502199,1.5817733722833793e-07,1.9340884938046088e-07,0.0002407729213236287,True,True,convergencia,El residuo es menor que la tolerancia.,0.6417143708728826,1e-06,100
+mixta,Newton-Raphson,2,0.6417144862859084,1.1541302580297952e-07,1.4111945989547792e-07,0.0009464456828532919,True,True,convergencia,El residuo es menor que la tolerancia.,0.6417143708728826,1e-06,100
+mixta,Newton mejorado,2,0.6417143002999939,7.057288875511603e-08,8.62918864141804e-08,0.0007409800633551011,True,True,convergencia,El residuo es menor que la tolerancia.,0.6417143708728826,1e-06,100

@@ -1,0 +1,8 @@
+.venv/
+.venv_verificacion/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mplconfig/
+*.tmp
+~$*.docx
