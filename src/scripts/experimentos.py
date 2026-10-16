@@ -19,3 +19,17 @@ def ejecutar_metodo(nombre, funcion, referencia, a, b, x0, secante_x0, secante_x
     else:
         raise ValueError("Método desconocido.")
     return resultado
+
+def resumir_resultado(funcion, nombre, resultado, referencia):
+    error = None
+    residuo = None
+    paso = None
+    if resultado["historial"]:
+        ultimo = resultado["historial"][-1]
+        error = ultimo["error_absoluto"]
+        residuo = ultimo["residuo"]
+        paso = ultimo["paso"]
+    precision_raiz = False
+    if error is not None:
+        precision_raiz = error < tolerancia
+    return {"funcion": funcion["id"], "metodo": nombre, "iteraciones": resultado["iteraciones"], "raiz": resultado["raiz"], "error": error, "residuo": residuo, "paso": paso, "convergio": resultado["convergio"], "precision_raiz": precision_raiz, "estado": resultado["estado"], "motivo": resultado["motivo"], "raiz_referencia": referencia, "tolerancia": tolerancia, "max_iteraciones": max_iteraciones,}
