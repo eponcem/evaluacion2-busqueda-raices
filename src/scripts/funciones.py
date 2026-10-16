@@ -19,3 +19,11 @@ def df_raiz_doble(x): return 2.0 * (x - 2.0)
 def ddf_raiz_doble(x): return 2.0
 
 def g_raiz_doble(x): return (x + 2.0) / 2.0
+
+def f_logaritmica(x): return np.log(x) + x - 4.0
+
+def df_logaritmica(x): return np.divide(1.0, x) + 1.0
+
+def ddf_logaritmica(x): return -np.divide(1.0, np.square(x))
+
+def g_logaritmica(x): return 4.0 - np.log(x)
