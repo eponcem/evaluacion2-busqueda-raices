@@ -116,3 +116,50 @@ def newton_raphson(f, df, x0, tol=1e-6, max_iter=100, raiz_referencia=None):
         if np.abs(fx) < tol or paso < tol:
             return terminar(resultado, "convergencia", motivo_parada(fx, tol))
     return terminar(resultado, "maximo_iteraciones", "Se alcanzó el máximo de iteraciones sin cumplir el criterio de parada.")
+
+def newton_mejorado(f, df, ddf, x0, tol=1e-6, max_iter=100, raiz_referencia=None):
+    resultado = crear_resultado("Newton mejorado")
+    motivo = validar_parametros(tol, max_iter)
+    if motivo is not None:
+        return terminar(resultado, "entrada_invalida", motivo)
+    if not es_numero_finito(x0):
+        return terminar(resultado, "entrada_invalida", "La aproximación inicial debe ser finita.")
+    x = float(x0)
+    fx = evaluar_funcion(f, x)
+    if not es_numero_finito(fx):
+        return terminar(resultado, "error_numerico", "La evaluación no es finita o está fuera del dominio.")
+    fx = float(fx)
+    registrar_paso(resultado, 0, x, fx, None, raiz_referencia)
+    if np.abs(fx) < tol:
+        return terminar(resultado, "convergencia", motivo_parada(fx, tol))
+    for iteracion in range(1, max_iter + 1):
+        dfx = evaluar_funcion(df, x)
+        ddfx = evaluar_funcion(ddf, x)
+        if not es_numero_finito(dfx) or not es_numero_finito(ddfx):
+            return terminar(resultado, "error_numerico", "La primera o segunda derivada no es finita o está fuera del dominio.")
+        dfx = float(dfx)
+        ddfx = float(ddfx)
+        if dfx == 0:
+            return terminar(resultado, "error_numerico", "La primera derivada es cero y f/f' no está definido; se evita una falsa parada por paso cero.")
+        cuadrado_derivada = dfx * dfx
+        producto_segunda = fx * ddfx
+        denominador = cuadrado_derivada - producto_segunda
+        if denominador == 0:
+            return terminar(resultado, "error_numerico", "El denominador de Newton mejorado es cero.")
+        if not math.isfinite(denominador):
+            return terminar(resultado, "error_numerico", "El denominador de Newton mejorado no es finito.")
+        numerador = fx * dfx
+        correccion = numerador / denominador
+        x_nuevo = x - correccion
+        paso = np.abs(x_nuevo - x)
+        if not math.isfinite(numerador) or not math.isfinite(correccion) or not math.isfinite(x_nuevo) or not math.isfinite(paso):
+            return terminar(resultado, "error_numerico", "La aproximación o la corrección de Newton mejorado no es finita.")
+        fx_nuevo = evaluar_funcion(f, x_nuevo)
+        if not es_numero_finito(fx_nuevo):
+            return terminar(resultado, "error_numerico", "La evaluación no es finita o está fuera del dominio.")
+        x = x_nuevo
+        fx = float(fx_nuevo)
+        registrar_paso(resultado, iteracion, x, fx, paso, raiz_referencia)
+        if np.abs(fx) < tol or paso < tol:
+            return terminar(resultado, "convergencia", motivo_parada(fx, tol))
+    return terminar(resultado, "maximo_iteraciones", "Se alcanzó el máximo de iteraciones sin cumplir el criterio de parada.")
