@@ -28,3 +28,13 @@ def terminar(resultado, estado, motivo):
     resultado["motivo"] = motivo
     resultado["convergio"] = estado == "convergencia"
     return resultado
+
+def registrar_paso(resultado, iteracion, x, fx, paso, raiz_referencia):
+    error_absoluto = None
+    if raiz_referencia is not None and es_numero_finito(raiz_referencia):
+        error_absoluto = np.abs(x - float(raiz_referencia))
+        if not math.isfinite(error_absoluto):
+            error_absoluto = None
+    resultado["historial"].append({"iteracion": iteracion, "x": x, "fx": fx, "residuo": np.abs(fx), "paso": paso, "error_absoluto": error_absoluto})
+    resultado["raiz"] = x
+    resultado["iteraciones"] = iteracion
