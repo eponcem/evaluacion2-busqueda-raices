@@ -55,3 +55,14 @@ def ddf_mixta(x): return -np.divide(1.0, 4.0 * x * np.sqrt(x)) + np.cos(x)
 def g_mixta(x):
     correccion = 0.5 * f_mixta(x)
     return x - correccion
+
+def obtener_funciones():
+    funciones = [
+        {"id": "polinomica", "nombre": "Polinómica", "formula": "x^3 - x - 2", "f": f_polinomica, "df": df_polinomica, "ddf": ddf_polinomica, "g": g_polinomica, "formula_g": "raíz cúbica de (x + 2)", "a": 1.0, "b": 2.0, "x0": 1.5, "secante_x0": 1.0, "secante_x1": 2.0, "doble": False},
+        {"id": "raiz_doble", "nombre": "Raíz doble", "formula": "(x - 2)^2", "f": f_raiz_doble, "df": df_raiz_doble, "ddf": ddf_raiz_doble, "g": g_raiz_doble, "formula_g": "(x + 2) / 2", "a": 1.0, "b": 3.0, "x0": 1.2, "secante_x0": 1.2, "secante_x1": 1.3, "doble": True},
+        {"id": "logaritmica", "nombre": "Logarítmica", "formula": "ln(x) + x - 4", "f": f_logaritmica, "df": df_logaritmica, "ddf": ddf_logaritmica, "g": g_logaritmica, "formula_g": "4 - ln(x)", "a": 2.0, "b": 3.0, "x0": 2.5, "secante_x0": 2.0, "secante_x1": 3.0, "doble": False},
+        {"id": "exponencial", "nombre": "Exponencial", "formula": "exp(-x) - x", "f": f_exponencial, "df": df_exponencial, "ddf": ddf_exponencial, "g": g_exponencial, "formula_g": "exp(-x)", "a": 0.0, "b": 1.0, "x0": 0.5, "secante_x0": 0.0, "secante_x1": 1.0, "doble": False},
+        {"id": "trigonometrica", "nombre": "Trigonométrica", "formula": "cos(x) - x", "f": f_trigonometrica, "df": df_trigonometrica, "ddf": ddf_trigonometrica, "g": g_trigonometrica, "formula_g": "cos(x)", "a": 0.0, "b": 1.0, "x0": 0.5, "secante_x0": 0.0, "secante_x1": 1.0, "doble": False},
+        {"id": "mixta", "nombre": "Mixta", "formula": "sqrt(x) - cos(x)", "f": f_mixta, "df": df_mixta, "ddf": ddf_mixta, "g": g_mixta, "formula_g": "x - 0.5 * (sqrt(x) - cos(x))", "a": 0.1, "b": 1.0, "x0": 0.55, "secante_x0": 0.1, "secante_x1": 1.0, "doble": False},
+    ]
+    return funciones
