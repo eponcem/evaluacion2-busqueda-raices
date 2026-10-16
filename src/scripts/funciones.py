@@ -9,3 +9,13 @@ def ddf_polinomica(x): return 6.0 * x
 def g_polinomica(x):
     radicando = x + 2.0
     return np.cbrt(radicando)
+
+def f_raiz_doble(x):
+    diferencia = x - 2.0
+    return np.square(diferencia)
+
+def df_raiz_doble(x): return 2.0 * (x - 2.0)
+
+def ddf_raiz_doble(x): return 2.0
+
+def g_raiz_doble(x): return (x + 2.0) / 2.0
