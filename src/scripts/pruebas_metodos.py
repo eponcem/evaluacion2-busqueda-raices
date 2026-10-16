@@ -109,3 +109,38 @@ def f_constante(x): return 1.0
 def g_paso_pequeno(x): return x + 1e-8
 
 def g_paso_cuarto(x): return x + 0.25
+
+def comprobar_errores(funciones):
+    for tol in (0.0, -1e-6, np.nan):
+        for resultado in ejecutar_metodos(funciones[0], tol=tol):
+            assert resultado["estado"] == "entrada_invalida"
+    for resultado in ejecutar_metodos(funciones[0], max_iter=1):
+        assert not resultado["convergio"]
+        assert resultado["iteraciones"] == 1
+
+    for indice in (2, 5):
+        datos = funciones[indice]
+        assert newton_raphson(datos["f"], datos["df"], -1.0)["estado"] == "error_numerico"
+        assert newton_mejorado(datos["f"], datos["df"], datos["ddf"], -1.0)["estado"] == "error_numerico"
+    assert newton_raphson(f_sin_raiz, df_sin_raiz, 0.0)["estado"] == "error_numerico"
+    assert secante(funciones[1]["f"], 1.0, 3.0)["estado"] == "error_numerico"
+    assert biseccion(funciones[0]["f"], 2.0, 1.0)["estado"] == "entrada_invalida"
+    assert newton_raphson(funciones[0]["f"], funciones[0]["df"], np.inf)["estado"] == "entrada_invalida"
+    assert newton_raphson(funciones[0]["f"], funciones[0]["df"], "texto")["estado"] == "entrada_invalida"
+    assert newton_raphson(funciones[0]["f"], funciones[0]["df"], 10**400)["estado"] == "entrada_invalida"
+    assert newton_raphson(funciones[3]["f"], funciones[3]["df"], -1000.0)["estado"] == "error_numerico"
+    assert newton_raphson(funciones[0]["f"], funciones[0]["df"], 1e308)["estado"] == "error_numerico"
+    assert newton_raphson(funciones[5]["f"], funciones[5]["df"], 0.0)["estado"] == "error_numerico"
+    resultado = newton_raphson(funciones[1]["f"], funciones[1]["df"], 2.0)
+    assert resultado["convergio"] and resultado["iteraciones"] == 0
+    resultado = newton_mejorado(funciones[1]["f"], funciones[1]["df"], funciones[1]["ddf"], 2.0)
+    assert resultado["convergio"] and resultado["iteraciones"] == 0
+    assert newton_mejorado(f_sin_raiz, df_sin_raiz, ddf_sin_raiz, 1.0)["estado"] == "error_numerico"  
+    assert newton_mejorado(f_sin_raiz, df_sin_raiz, ddf_sin_raiz, 0.0)["estado"] == "error_numerico" 
+    assert newton_mejorado(funciones[0]["f"], funciones[0]["df"], funciones[0]["ddf"], np.inf)["estado"] == "entrada_invalida"
+    assert newton_mejorado(funciones[3]["f"], funciones[3]["df"], funciones[3]["ddf"], -1000.0)["estado"] == "error_numerico"
+
+    resultado = punto_fijo(f_constante, g_paso_pequeno, 0.0)
+    assert resultado["convergio"] and resultado["historial"][-1]["residuo"] == 1.0
+    resultado = punto_fijo(f_constante, g_paso_cuarto, 0.0, tol=0.25, max_iter=1)
+    assert not resultado["convergio"]
