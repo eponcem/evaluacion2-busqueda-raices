@@ -17,7 +17,15 @@ def validar_parametros(tol, max_iter):
 
 
 def crear_resultado(metodo):
-    return {"metodo": metodo, "raiz": None, "iteraciones": 0, "convergio": False, "estado": "entrada_invalida", "motivo": "", "historial": []}
+    return {
+        "metodo": metodo,
+        "raiz": None,
+        "iteraciones": 0,
+        "convergio": False,
+        "estado": "entrada_invalida",
+        "motivo": "",
+        "historial": [],
+    }
 
 def terminar(resultado, estado, motivo):
     resultado["estado"] = estado
@@ -31,7 +39,14 @@ def registrar_paso(resultado, iteracion, x, fx, paso, raiz_referencia):
         error_absoluto = np.abs(x - float(raiz_referencia))
         if not math.isfinite(error_absoluto):
             error_absoluto = None
-    resultado["historial"].append({"iteracion": iteracion, "x": x, "fx": fx, "residuo": np.abs(fx), "paso": paso, "error_absoluto": error_absoluto})
+    resultado["historial"].append({
+        "iteracion": iteracion,
+        "x": x,
+        "fx": fx,
+        "residuo": np.abs(fx),
+        "paso": paso,
+        "error_absoluto": error_absoluto,
+    })
     resultado["raiz"] = x
     resultado["iteraciones"] = iteracion
 

@@ -31,7 +31,22 @@ if __name__ == "__main__":
         demostracion = "Cambio de signo y continuidad"
         if funcion["doble"]:
             demostracion = "f(2)=0, f'(2)=0, f''(2)=2; f(x)>=0; tangencia"
-        ambiente.append({"funcion": funcion["id"], "formula": funcion["formula"], "a": a, "b": b, "x0": funcion["x0"], "secante_x0": funcion["secante_x0"], "secante_x1": funcion["secante_x1"], "tolerancia": tolerancia, "max_iteraciones": max_iteraciones, "f(a)": fa, "f(b)": fb, "producto": fa * fb, "demostracion": demostracion, "g(x)": funcion["formula_g"]})
+        ambiente.append({
+            "funcion": funcion["id"],
+            "formula": funcion["formula"],
+            "a": a,
+            "b": b,
+            "x0": funcion["x0"],
+            "secante_x0": funcion["secante_x0"],
+            "secante_x1": funcion["secante_x1"],
+            "tolerancia": tolerancia,
+            "max_iteraciones": max_iteraciones,
+            "f(a)": fa,
+            "f(b)": fb,
+            "producto": fa * fb,
+            "demostracion": demostracion,
+            "g(x)": funcion["formula_g"],
+        })
         filas_referencias.append({"funcion": funcion["id"], "raiz_referencia": referencia})
         x = np.linspace(a, b, 401)
         y = funcion["f"](x)
@@ -47,9 +62,21 @@ if __name__ == "__main__":
             fila = resumir_resultado(funcion, nombre, resultado, referencia)
             resumen.append(fila)
             for registro in resultado["historial"]:
-                fila_historial = {"metodo": nombre, "iteracion": registro["iteracion"], "x": registro["x"], "fx": registro["fx"], "residuo": registro["residuo"], "paso": registro["paso"], "error_absoluto": registro["error_absoluto"],}
+                fila_historial = {
+                    "metodo": nombre,
+                    "iteracion": registro["iteracion"],
+                    "x": registro["x"],
+                    "fx": registro["fx"],
+                    "residuo": registro["residuo"],
+                    "paso": registro["paso"],
+                    "error_absoluto": registro["error_absoluto"],
+                }
                 historial.append(fila_historial)
-            print(f"{funcion['id']:14} | {nombre:16} | n={resultado['iteraciones']:3} | {resultado['estado']}")
+            print("Función:", funcion["id"])
+            print("Método:", nombre)
+            print("Iteraciones:", resultado["iteraciones"])
+            print("Estado:", resultado["estado"])
+            print()
         guardar_csv(f"historial_{funcion['id']}.csv", ["metodo", "iteracion", "x", "fx", "residuo", "paso", "error_absoluto"], historial)
         graficar_funcion(funcion, referencia, x, y)
         graficar_convergencia(funcion, resultados)

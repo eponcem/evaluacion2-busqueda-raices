@@ -32,11 +32,33 @@ def resumir_resultado(funcion, nombre, resultado, referencia):
     precision_raiz = False
     if error is not None:
         precision_raiz = error < tolerancia
-    return {"funcion": funcion["id"], "metodo": nombre, "iteraciones": resultado["iteraciones"], "raiz": resultado["raiz"], "error": error, "residuo": residuo, "paso": paso, "convergio": resultado["convergio"], "precision_raiz": precision_raiz, "estado": resultado["estado"], "motivo": resultado["motivo"], "raiz_referencia": referencia, "tolerancia": tolerancia, "max_iteraciones": max_iteraciones,}
+    return {
+        "funcion": funcion["id"],
+        "metodo": nombre,
+        "iteraciones": resultado["iteraciones"],
+        "raiz": resultado["raiz"],
+        "error": error,
+        "residuo": residuo,
+        "paso": paso,
+        "convergio": resultado["convergio"],
+        "precision_raiz": precision_raiz,
+        "estado": resultado["estado"],
+        "motivo": resultado["motivo"],
+        "raiz_referencia": referencia,
+        "tolerancia": tolerancia,
+        "max_iteraciones": max_iteraciones,
+    }
 
 def ejecutar_experimentos(funciones, referencias):
     filas = []
-    intervalos_estrechos = {"polinomica": [1.4, 1.6], "raiz_doble": [1.5, 2.5], "logaritmica": [2.8, 3.0], "exponencial": [0.5, 0.7], "trigonometrica": [0.7, 0.8], "mixta": [0.6, 0.7],}
+    intervalos_estrechos = {
+        "polinomica": [1.4, 1.6],
+        "raiz_doble": [1.5, 2.5],
+        "logaritmica": [2.8, 3.0],
+        "exponencial": [0.5, 0.7],
+        "trigonometrica": [0.7, 0.8],
+        "mixta": [0.6, 0.7],
+    }
     for funcion in funciones:
         referencia = float(referencias[funcion["id"]])
         a_estrecho = intervalos_estrechos[funcion["id"]][0]
