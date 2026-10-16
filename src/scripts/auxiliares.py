@@ -5,7 +5,6 @@ def evaluar_funcion(funcion, x):
     with np.errstate(all="ignore"):
         return funcion(np.float64(x))
 
-# Los datos se definen como números en el programa; max_iter debe ser entero.
 def es_numero_finito(valor):
     return math.isfinite(valor)
 

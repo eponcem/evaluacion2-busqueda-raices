@@ -2,7 +2,6 @@ import numpy as np
 import matplotlib
 from configuracion import carpeta_graficos, nombres_metodos
 
-# Los gráficos se guardan en PNG sin abrir ventanas.
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
