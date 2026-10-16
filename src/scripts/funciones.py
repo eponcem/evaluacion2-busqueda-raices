@@ -35,3 +35,11 @@ def df_exponencial(x): return -np.exp(-x) - 1.0
 def ddf_exponencial(x): return np.exp(-x)
 
 def g_exponencial(x): return np.exp(-x)
+
+def f_trigonometrica(x): return np.cos(x) - x
+
+def df_trigonometrica(x): return -np.sin(x) - 1.0
+
+def ddf_trigonometrica(x): return -np.cos(x)
+
+def g_trigonometrica(x): return np.cos(x)
