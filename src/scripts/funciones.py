@@ -43,3 +43,15 @@ def df_trigonometrica(x): return -np.sin(x) - 1.0
 def ddf_trigonometrica(x): return -np.cos(x)
 
 def g_trigonometrica(x): return np.cos(x)
+
+def f_mixta(x): return np.sqrt(x) - np.cos(x)
+
+def df_mixta(x):
+    derivada_raiz = 1.0 / (2.0 * np.sqrt(x))
+    return derivada_raiz + np.sin(x)
+
+def ddf_mixta(x): return -np.divide(1.0, 4.0 * x * np.sqrt(x)) + np.cos(x)
+
+def g_mixta(x):
+    correccion = 0.5 * f_mixta(x)
+    return x - correccion
