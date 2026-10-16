@@ -27,3 +27,11 @@ def df_logaritmica(x): return np.divide(1.0, x) + 1.0
 def ddf_logaritmica(x): return -np.divide(1.0, np.square(x))
 
 def g_logaritmica(x): return 4.0 - np.log(x)
+
+def f_exponencial(x): return np.exp(-x) - x
+
+def df_exponencial(x): return -np.exp(-x) - 1.0
+
+def ddf_exponencial(x): return np.exp(-x)
+
+def g_exponencial(x): return np.exp(-x)
