@@ -19,3 +19,12 @@ def validar_parametros(tol, max_iter):
     if isinstance(max_iter, bool) or not isinstance(max_iter, (int, np.integer)) or max_iter <= 0:
         return "El máximo de iteraciones debe ser un entero positivo."
     return None
+
+def crear_resultado(metodo):
+    return {"metodo": metodo, "raiz": None, "iteraciones": 0, "convergio": False, "estado": "entrada_invalida", "motivo": "", "historial": []}
+
+def terminar(resultado, estado, motivo):
+    resultado["estado"] = estado
+    resultado["motivo"] = motivo
+    resultado["convergio"] = estado == "convergencia"
+    return resultado
