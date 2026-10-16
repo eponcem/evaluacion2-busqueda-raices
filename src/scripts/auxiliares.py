@@ -38,3 +38,10 @@ def registrar_paso(resultado, iteracion, x, fx, paso, raiz_referencia):
     resultado["historial"].append({"iteracion": iteracion, "x": x, "fx": fx, "residuo": np.abs(fx), "paso": paso, "error_absoluto": error_absoluto})
     resultado["raiz"] = x
     resultado["iteraciones"] = iteracion
+
+def motivo_parada(fx, tol):
+    if fx == 0:
+        return "Se encontró una raíz exacta en la aritmética utilizada."
+    if np.abs(fx) < tol:
+        return "El residuo es menor que la tolerancia."
+    return "El paso es menor que la tolerancia; el residuo aún no cumple la tolerancia."
