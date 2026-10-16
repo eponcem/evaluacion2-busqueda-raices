@@ -62,3 +62,38 @@ def graficar_convergencia(funcion, resultados):
         plt.tight_layout()
     plt.savefig(carpeta_graficos / f"convergencia_{funcion['id']}.png")
     plt.close()
+
+def graficar_resumen(funciones, resumen):
+    plt.figure(figsize=(9, 5))
+    nombres_funciones = []
+    for funcion in funciones:
+        nombres_funciones.append(funcion["nombre"])
+    for nombre in nombres_metodos:
+        cantidades = []
+        no_aplica = False
+        no_converge = False
+        for funcion in funciones:
+            for fila in resumen:
+                if fila["funcion"] == funcion["id"] and fila["metodo"] == nombre:
+                    if fila["estado"] == "no_aplicable":
+                        cantidades.append(np.nan)
+                        no_aplica = True
+                    else:
+                        cantidades.append(fila["iteraciones"])
+                        if not fila["convergio"]:
+                            no_converge = True
+                    break
+        etiqueta = nombre
+        if no_aplica:
+            etiqueta += " (NA: sin cambio de signo)"
+        if no_converge:
+            etiqueta += " (incluye casos sin convergencia)"
+        plt.plot(nombres_funciones, cantidades, ".-", label=etiqueta)
+    plt.title("Iteraciones por método y función")
+    plt.xlabel("Función")
+    plt.ylabel("Iteraciones")
+    plt.grid(True)
+    plt.legend(fontsize=8)
+    plt.tight_layout()
+    plt.savefig(carpeta_graficos / "resumen_iteraciones.png")
+    plt.close()
