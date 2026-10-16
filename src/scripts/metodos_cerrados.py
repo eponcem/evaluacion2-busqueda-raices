@@ -26,7 +26,7 @@ def biseccion(f, a, b, tol=1e-6, max_iter=100, raiz_referencia=None):
             fx = fb
         registrar_paso(resultado, 0, x, fx, None, raiz_referencia)
         return terminar(resultado, "convergencia", "Se encontró una raíz exacta en un extremo del intervalo.")
-    if np.signbit(fa) == np.signbit(fb):
+    if fa * fb > 0:
         return terminar(resultado, "no_aplicable", "No hay cambio de signo entre los extremos del intervalo.")
 
     x_anterior = None
@@ -44,7 +44,7 @@ def biseccion(f, a, b, tol=1e-6, max_iter=100, raiz_referencia=None):
         registrar_paso(resultado, iteracion, x, fx, paso, raiz_referencia)
         if np.abs(fx) < tol or (paso is not None and paso < tol):
             return terminar(resultado, "convergencia", motivo_parada(fx, tol))
-        if np.signbit(fa) != np.signbit(fx):
+        if fa * fx < 0:
             b = x
             fb = fx
         else:
@@ -77,7 +77,7 @@ def falsa_posicion(f, a, b, tol=1e-6, max_iter=100, raiz_referencia=None):
             fx = fb
         registrar_paso(resultado, 0, x, fx, None, raiz_referencia)
         return terminar(resultado, "convergencia", "Se encontró una raíz exacta en un extremo del intervalo.")
-    if np.signbit(fa) == np.signbit(fb):
+    if fa * fb > 0:
         return terminar(resultado, "no_aplicable", "No hay cambio de signo entre los extremos del intervalo.")
 
     x_anterior = None
@@ -105,7 +105,7 @@ def falsa_posicion(f, a, b, tol=1e-6, max_iter=100, raiz_referencia=None):
         registrar_paso(resultado, iteracion, x, fx, paso, raiz_referencia)
         if np.abs(fx) < tol or (paso is not None and paso < tol):
             return terminar(resultado, "convergencia", motivo_parada(fx, tol))
-        if np.signbit(fa) != np.signbit(fx):
+        if fa * fx < 0:
             b = x
             fb = fx
         else:

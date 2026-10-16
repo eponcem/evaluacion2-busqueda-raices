@@ -2,8 +2,7 @@ import math
 import numpy as np
 
 def evaluar_funcion(funcion, x):
-    with np.errstate(all="ignore"):
-        return funcion(np.float64(x))
+    return funcion(np.float64(x))
 
 def es_numero_finito(valor):
     return math.isfinite(valor)
