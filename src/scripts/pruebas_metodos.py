@@ -97,3 +97,15 @@ def comprobar_resultados(funciones, referencias):
     resultado = newton_mejorado(doble["f"], doble["df"], doble["ddf"], 1.2, raiz_referencia=2.0)
     assert resultado["convergio"] and resultado["iteraciones"] == 1
     assert abs(resultado["raiz"] - 2.0) < 1e-14
+
+def f_sin_raiz(x): return x * x + 1
+
+def df_sin_raiz(x): return 2 * x
+
+def ddf_sin_raiz(x): return 2.0
+
+def f_constante(x): return 1.0
+
+def g_paso_pequeno(x): return x + 1e-8
+
+def g_paso_cuarto(x): return x + 0.25
