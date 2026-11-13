@@ -1,0 +1,42 @@
+name: Alerta por cambios
+
+on:
+  push:
+
+jobs:
+  enviar-correo:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Enviar correo
+        env:
+          GMAIL_USER: ${{ secrets.GMAIL_USER }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          REPOSITORIO: ${{ github.repository }}
+          RAMA: ${{ github.ref_name }}
+          USUARIO: ${{ github.actor }}
+          COMMIT: ${{ github.sha }}
+        run: |
+          python3 - <<'PY'
+          import os
+          import smtplib
+          from email.message import EmailMessage
+
+          correo = os.environ["GMAIL_USER"]
+
+          mensaje = EmailMessage()
+          mensaje["Subject"] = "Alerta: cambios en tu repositorio"
+          mensaje["From"] = correo
+          mensaje["To"] = correo
+          mensaje.set_content(
+              "Se subieron cambios al repositorio.\n\n"
+              f"Repositorio: {os.environ['REPOSITORIO']}\n"
+              f"Rama: {os.environ['RAMA']}\n"
+              f"Usuario: {os.environ['USUARIO']}\n"
+              f"Último commit: {os.environ['COMMIT']}\n"
+          )
+
+          with smtplib.SMTP_SSL("smtp.gmail.com", 465) as servidor:
+              servidor.login(correo, os.environ["GMAIL_APP_PASSWORD"])
+              servidor.send_message(mensaje)
+          PY
